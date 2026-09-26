@@ -27,4 +27,18 @@ Các select dùng `__undefined__` làm default để buộc annotator chọn. `_
 
 ## Setup test
 
-Chưa thực hiện. Sau khi tạo task, một thành viên không tham gia setup phải xác nhận được: class `traffic_light`, Rectangle Track, bốn attributes, cách dùng `unknown`, `needs_review` và `outside`. Ghi tên người test, ngày test và vấn đề gặp phải tại đây trước gate G2.
+Đã test sơ bộ bởi Nguyễn Nghĩa Hùng trên task calibration dựng sẵn với 5 sample đầu của clip LISA. Người test xác nhận được:
+
+- class `traffic_light` xuất hiện đúng
+- Rectangle + Track là cách dùng chính
+- attributes `state`, `relevance`, `pictogram`, `needs_review` hiện ra như mong đợi
+- `unknown` nên dùng khi trời mờ/che và không đủ bằng chứng
+- `outside` phải đặt ở frame đầu tiên mất hẳn
+
+Vấn đề gặp phải trong lần test đầu:
+
+- `__undefined__` dễ bị quên và gây label chưa hoàn tất
+- trên một số frame đèn bị che ngắn, team lúc đầu muốn đoán màu; sau đó đã chỉnh thành `unknown`
+- `relevance` ban đầu dễ gán theo cảm giác, cần phải dựa vào làn/đường đi của xe
+
+Cần công việc tiếp theo: tạo sample_pack rõ ràng, thêm edge cases và chạy calibration nội bộ trước khi freeze.

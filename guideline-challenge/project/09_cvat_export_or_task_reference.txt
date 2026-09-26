@@ -1,8 +1,9 @@
 CVAT task reference — thay mọi placeholder mới là xong.
 
-CVAT version: TODO
-Task calibration (tên, id): TODO
-Task bản cuối theo guideline v3 (tên, id) hoặc lý do không có: TODO
-File export đã nộp (đường dẫn trong repo): TODO
-Guideline version dán trong Guide của task: TODO
-Ghi chú cho người tiếp nhận: TODO
+CVAT version: 2.76.1
+Task calibration (tên, id): `just-for-fun-calib-v1` (pending / chưa hoàn tất trước freeze)
+Task bản cuối theo guideline v3 (tên, id) hoặc lý do không có: chưa tạo final task, đang ở giai đoạn freeze và blind handoff; sẽ tạo sau khi calibration và QA hoàn tất
+File export đã nộp (đường dẫn trong repo): chưa có export chính thức trong repo; export sẽ được lưu trong `project/06_calibration_exports/` khi calibration chạy xong
+Guideline version dán trong Guide của task: v1 hiện tại, sẽ nâng lên v2/v3 sau calibration và blind handoff
+Ghi chú cho người tiếp nhận: task này nhắm vào traffic light với track-based annotation; ưu tiên `unknown` khi không đủ bằng chứng, và `outside` khi đèn biến mất hoàn toàn; peer Sakana sẽ test guideline và task với blind pack
+
