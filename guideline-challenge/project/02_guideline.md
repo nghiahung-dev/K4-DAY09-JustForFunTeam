@@ -1,6 +1,6 @@
 # Annotation guideline — Traffic light state + ego relevance
 
-**Version:** v1
+**Version:** v2
 
 <!--
 Tăng lên v2 sau calibration và v3 sau blind handoff; mỗi lần tăng version phải cập nhật 08_revision_log.md.

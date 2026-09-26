@@ -1,1 +1,14 @@
 sample_id,decision_id,expected,severity,rationale
+LISA15,d1,label=traffic_light,major,Đèn rõ và vẫn thuộc phạm vi label; một đầu đèn cần 1 track riêng.
+LISA15,d2,geometry: box fits lamp body,minor,Box phải sát thân đèn và không chứa cột.
+LISA15,d3,relevance=relevant,critical,Đèn thuộc làn xe và trực tiếp quyết định dừng/đi.
+LISA18,d1,state=unknown,major,Đèn bị che/loá; không đủ bằng chứng để đánh màu.
+LISA18,d2,relevance=unknown,critical,Không đủ ngữ cảnh để xác định xem đèn có thuộc làn xe hay không.
+LISA20,d1,pictogram=arrow_left,major,Mũi tên trái phải được nhận diện đúng theo hình dạng đầu đèn.
+LISA20,d2,relevance=not_relevant,critical,Đèn này không thuộc hướng đi của xe đang quan sát.
+LISA22,d1,pictogram=arrow_straight,major,Đèn còn nhỏ nhưng đủ để ghi nhận hướng mũi tên.
+LISA22,d2,relevance=unknown,major,Đèn xa và mùa/ánh sáng làm yếu độ tin cậy, cần tránh đoán mò.
+LISA25,d1,OUTSIDE,critical,Đèn ra khỏi khung; bắt buộc set `outside` ở frame đầu tiên mất hẳn.
+LISA25,d2,geometry: track closes at exit,major,Track không được kéo dài bằng box không có vật thể thực.
+LISA12,d1,state=unknown,critical,Che phần lớn hạt tín hiệu nên không đủ bằng chứng cho màu.
+LISA12,d2,needs_review=true,major,Nếu cần xác minh thêm thì phải có cơ chế escalation rõ trong CVAT.

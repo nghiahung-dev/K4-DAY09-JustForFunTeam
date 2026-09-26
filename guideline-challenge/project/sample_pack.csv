@@ -1,1 +1,14 @@
 sample_id,split,tags,reason
+LISA01,example,normal;edge,đèn rõ ở đầu clip; dùng làm ví dụ cơ bản cho `state=red` và `relevance`
+LISA02,example,normal,đèn ở frame tiếp theo để xác định track và box ổn định
+LISA03,example,edge;occlusion,đèn còn rõ nhưng có độ nghiêng nhỏ và che nhẹ ở mép khung
+LISA05,calibration,normal,đèn rõ và dễ đo `state` khi chuyển từ đỏ sang xanh
+LISA07,calibration,edge;critical,đèn có mũi tên và làn xe cần phân biệt `relevance`
+LISA10,calibration,normal;small_far,đèn nhỏ hơn nhưng còn nhận diện được; test case small/far
+LISA14,calibration,edge;temporal,track đổi màu trong một vài frame; test `state` chuyển đổi theo thời gian
+LISA12,blind,ambiguity;critical,đèn bị che một phần và cần dùng `unknown` hoặc `needs_review`
+LISA15,blind,normal,đèn rõ để check việc giữ track và `state` stable
+LISA18,blind,edge;occlusion,đèn bị che nhẹ và cần `unknown` trong một số frame
+LISA20,blind,critical;ambiguity,đèn mũi tên và hướng đi của xe cần xác định `relevance`
+LISA22,blind,edge;small_far,đèn xa hơn cần kiểm tra `pictogram` và `relevance`
+LISA25,blind,critical;normal,đèn ở cuối clip; test `outside` và đóng track đúng thời điểm
