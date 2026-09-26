@@ -2,16 +2,14 @@
 
 Điền trước phút 15. Thay mọi placeholder; còn sót thì `make status` báo ở gate G1.
 
-- **Team:** TODO (ví dụ `team07`)
-- **Nhóm peer test bài của mình:** TODO (cặp A ↔ B; số nhóm lẻ thì ring 3 nhóm A → B → C → A — Lab Coach công bố)
-- **Nhóm mình test bài của:** TODO
-- **Problem family:** TODO (xem README mục "1 · Chọn bài toán")
-- **Nguồn ảnh:** TODO (`bdd100k`, `gtsdb`, `lisa` — chỉ dùng ảnh trong `data/`)
+- **Team:** Just For Fun
+- **Nhóm peer test bài của mình:** 
+- **Nhóm mình test bài của:** 
+- **Problem family:** 
+- **Nguồn ảnh:** `lisa`
 
 | Thành viên | GitHub | Vai trò chính | File phụ trách |
 |---|---|---|---|
-| TODO | TODO | TODO | TODO |
-
-Gợi ý chia vai (nhóm 2–3 người thì gộp): **spec owner** (`01`, `02`), **CVAT owner** (`03_*`, `sample_pack.csv`,
-`09`), **gold owner** (`04_edge_cases/`), **QA owner** (`05`, `06`, `07_blind_handoff/`). Mỗi file một người sửa
-chính để tránh xung đột git. Calibration thì mọi người cùng label.
+| Nguyễn Nghĩa Hùng | nghiahung-dev | Spec Owner | `01`, `02`|
+| Lê Trung Toán | leetrungtoans | CVAT Owner | `03_*`, `sample_pack.csv`, `09` |
+| Đỗ Lý Minh Hải | dolyminhhai | QA owner | `05`, `06`, `07_blind_handoff/ |

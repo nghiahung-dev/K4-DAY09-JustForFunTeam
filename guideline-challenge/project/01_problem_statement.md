@@ -1,31 +1,26 @@
 # Problem statement + downstream contract
 
-Tối đa nửa trang, viết **trước khi mở CVAT**. Đây là bằng chứng của gate G1 (topic lock). Thay mọi placeholder
-mới là xong.
-
 ## Bài toán
 
-TODO — một câu: road element nào, trong tình huống nào, khó ở đâu. "Label traffic signs" là quá rộng; "hierarchical
-sign taxonomy cho biển nhỏ/xa/bị che" là đủ cụ thể.
+Gán nhãn và theo dõi từng đầu đèn giao thông trong chuỗi frame để xác định trạng thái, hình dạng và mức độ liên quan với hướng di chuyển của xe. Khó khăn chính là đèn nhỏ/xa, bị che, mờ hoặc loá và có thể đổi trạng thái theo thời gian.
 
 ## Downstream contract
 
-1. **Downstream task / model / user là ai?** TODO
-2. **Output annotation nào thực sự cần?** (geometry, class, attribute nào) TODO
-3. **Failure nào gây hậu quả lớn nhất?** (đây sẽ là decision `critical` trong gold) TODO
-4. **Khi ambiguity không resolve được, ai / ở đâu là escalation path?** TODO
+- **Người dùng:** hệ thống hỗ trợ lái xe cần nhận biết tín hiệu ảnh hưởng trực tiếp đến quyết định dừng/đi.
+- **Đầu ra:** một rectangle track cho mỗi đầu đèn, class `traffic_light`; attributes `state`, `pictogram`, `relevance`, `needs_review` và trạng thái `outside`.
+- **Lỗi nghiêm trọng nhất:** gán sai `state` hoặc `relevance` của đèn áp dụng cho xe, dẫn đến quyết định dừng/đi sai.
+- **Escalation:** dùng `unknown` khi thiếu bằng chứng và bật `needs_review=true` khi cần người phụ trách review.
 
 ## Scope
 
-- **Trong scope (bắt buộc label):** TODO
-- **Ngoài scope (ignore):** TODO
-- **Geometry tolerance:** TODO (ví dụ "box ôm phần vỏ đèn nhìn thấy, lệch ≤ 2 px mỗi cạnh là đạt")
+- **Trong scope:** các đầu đèn giao thông nhìn thấy đủ rõ trong clip LISA và ảnh calibration/example của CVAT; mỗi đầu đèn là một track liên tục.
+- **Ngoài scope:** cột, giá treo, biển báo, phản chiếu, vật không phải tín hiệu giao thông và đèn quá xa/không đủ bằng chứng để xác định là đầu đèn.
+- **Geometry:** box ôm sát vỏ đèn, không chứa cột/giá treo hoặc nhiều đầu đèn; đặt `outside` tại frame đầu tiên đèn biến mất hoàn toàn.
 
 ## Output chấm được
 
-TODO — loại decision nào sẽ có trong blind test: LABEL / IGNORE / UNKNOWN / ESCALATE, class, attribute, geometry.
-Mỗi loại phải nhìn thấy được trong file export CVAT, nếu không thì không chấm được.
+CVAT export phải thể hiện được: `LABEL` bằng track/box và các attributes hợp lệ; `IGNORE` bằng việc không tạo annotation; `UNKNOWN` bằng giá trị `unknown`; `ESCALATE` bằng `needs_review=true`. `state` thay đổi theo frame, còn `pictogram` và `relevance` giữ cố định theo track.
 
 ## Dữ liệu và giới hạn
 
-TODO — nguồn ảnh, số ảnh dự kiến dùng, giới hạn đã biết (ví dụ LISA trong repo chỉ có một clip 30 frame liên tiếp).
+Dữ liệu gồm clip LISA và ảnh calibration/example được đưa vào CVAT. Số lượng frame/ảnh chưa được guideline xác định; các trường hợp che khuất, mờ, loá hoặc thiếu bằng chứng phải dùng `unknown`, không suy đoán.
